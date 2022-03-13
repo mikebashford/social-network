@@ -31,30 +31,37 @@ const ReactionSchema = new Schema(
   }
 );
 
-const ThoughtSchema = new Schema({
-  thoughtText: {
-    type: String,
-    required: true,
-    min: 1,
-    max: 280,
-  },
+const ThoughtSchema = new Schema(
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      min: 1,
+      max: 280,
+    },
 
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (createdAtVal) => dateFormat(createdAtVal),
-  },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
+    },
 
-  username: {
-    type: String,
-    required: true,
-  },
+    username: {
+      type: String,
+      required: true,
+    },
 
-  reactions: [ReactionSchema],
-});
+    reactions: [ReactionSchema],
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
+);
 
 ThoughtSchema.virtual("reactionCount").get(function () {
-  return reactions.length;
+  return this.reactions.length;
 });
 
 const Thought = model("Thought", ThoughtSchema);

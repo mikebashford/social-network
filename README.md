@@ -24,6 +24,10 @@ A mongoose database to create users, allow them to post their thoughts, add frie
 
 ## Demo
 
+
+https://user-images.githubusercontent.com/13946486/158098290-1df0df44-cd7c-4b4c-b679-0188355f9e94.mp4
+
+
 ## Credits
 
 Made by Mike Bashford
